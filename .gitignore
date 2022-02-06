@@ -1,3 +1,5 @@
 *.swp
 *.swn
 *.swo
+*.idea
+*__pycache__
