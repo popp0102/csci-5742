@@ -6,13 +6,16 @@ from lib.sniffer             import Sniffer
 from lib.analyzer            import Analyzer
 from lib.connection_table    import ConnectionTable
 
+
 def sniff(connection_table):
-    sniffer = Sniffer(connection_table)
-    sniffer.sniff()
+    sniffer = Sniffer(connection_table, ["eth0"])
+    sniffer.listen()
+
 
 def analyze(args, connection_table):
     analyzer = Analyzer(args.fps, args.fpm, args.fp5m, connection_table)
     analyzer.analyze()
+
 
 def main():
     args             = cmd_parse()
@@ -27,6 +30,6 @@ def main():
     sniffer_thread.join()
     analyzer_thread.join()
 
+
 if __name__ == "__main__":
     main()
-

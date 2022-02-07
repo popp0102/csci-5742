@@ -3,7 +3,11 @@ class ConnectionTable():
         self.table = {}
 
     def add(self, src_ip, dest_ip, dest_port):
-        self.table[src_ip] = 1
+        key = src_ip + dest_ip + dest_port
+        if key in self.table:
+            self.table[key] += 1
+        else:
+            self.table[key] = 1
 
     def size(self):
         return len(self.table)
