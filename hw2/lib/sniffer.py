@@ -2,7 +2,7 @@ from random import randint
 from socket import socket, AF_PACKET, SOCK_RAW, htons
 from struct import unpack
 from time import sleep
-
+import logging
 
 class Sniffer(object):
     def __init__(self, connection_table, interfaces):
@@ -21,26 +21,27 @@ class Sniffer(object):
             interface = address[0]
             dest_mac, src_mac, protocol, ethernet_body = self.process_ethernet_frame(data)
 
-            print(f'Interface = {interface}')
+            logging.debug(f'Interface = {interface}')
             if interface in self.interfaces:
-                print(f'{self.to_ethernet_protocol_string(protocol)}')
+                logging.debug(f'{self.to_ethernet_protocol_string(protocol)}')
                 ip_protocol, source_ip, dest_ip, ip_body = self.process_ethernet_body(ethernet_body, protocol)
                 if ip_protocol is None:
-                    print("Unsupported Packet Type")
+                    logging.error("Unsupported Packet Type")
                     continue
                 source_string = '.'.join(map(str, source_ip))
                 dest_string = '.'.join(map(str, dest_ip))
-                print(f'Source IP: {source_string}')
-                print(f'Destination Ip: {dest_string}')
+                logging.debug(f'Source IP: {source_string}')
+                logging.debug(f'Destination Ip: {dest_string}')
                 protocol_string = self.to_packet_protocol_string(ip_protocol)
-                print(f"Ip Protocol: {protocol_string}")
+                logging.debug(f"Ip Protocol: {protocol_string}")
                 source_port, dest_port, sub_body = self.process_ip_body(ip_body, ip_protocol)
-                print(f"Source Port: {source_port}")
-                print(f"Dest Port: {dest_port}")
+                logging.debug(f"Source Port: {source_port}")
+                logging.debug(f"Dest Port: {dest_port}")
                 dest_port_string = str(dest_port)
                 if source_port is None:
-                    print("No port, continue")
+                    logger.warning("No port, continue")
                     continue
+                logging.info(f"(sniffer thread): ({protocol_string}) {source_string}:{source_port} -> {dest_string}:{dest_port}")
                 self.connection_table.add(source_string, dest_string, dest_port_string)
 
     @staticmethod
@@ -71,13 +72,13 @@ class Sniffer(object):
         if ip_protocol == 6:
             source_port, destination_port = unpack('!HH', data[:4])
             body = data[4:]
-            print(f"Source Port: {source_port}, Destination Port: {destination_port}")
+            logging.debug(f"Source Port: {source_port}, Destination Port: {destination_port}")
         elif ip_protocol == 17:
             source_port, destination_port = unpack('!HH', data[:4])
-            print(f"Source Port: {source_port}, Destination Port: {destination_port}")
+            logging.debug(f"Source Port: {source_port}, Destination Port: {destination_port}")
             body = data[4:]
         elif ip_protocol == 1:
-            print("ICMP no port")
+            logging.warning("ICMP no port")
         return source_port, destination_port, body
 
     @staticmethod

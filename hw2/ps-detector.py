@@ -5,19 +5,20 @@ from lib.command_line_parser import cmd_parse
 from lib.sniffer             import Sniffer
 from lib.analyzer            import Analyzer
 from lib.connection_table    import ConnectionTable
+import logging
 
 
 def sniff(connection_table):
     sniffer = Sniffer(connection_table, ["eth0"])
     sniffer.listen()
 
-
 def analyze(args, connection_table):
     analyzer = Analyzer(args.fps, args.fpm, args.fp5m, connection_table)
     analyzer.analyze()
 
-
 def main():
+    logging.basicConfig(level=logging.INFO, format='%(message)s')
+
     args             = cmd_parse()
     connection_table = ConnectionTable()
 

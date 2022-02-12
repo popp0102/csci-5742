@@ -1,4 +1,5 @@
 import time
+import logging
 
 class Analyzer(object):
     def __init__(self, second_threshold, minute_threshold, five_minute_threshold, connection_table):
@@ -9,6 +10,6 @@ class Analyzer(object):
 
     def analyze(self):
         while(1):
-            print("(analyzer thread) {} entries in the connection table".format(self.connection_table.size()))
+            logging.info(f"(analyzer thread): {self.connection_table.size()} entries in the connection table")
             time.sleep(1)
 
