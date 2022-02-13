@@ -57,11 +57,13 @@ class Sniffer(object):
         target_ip = None
         body = data
         if ethernet_protocol == 0x0800: # IPv4
-            protocol, source_ip, target_ip = unpack('!9xB2x4s4s', data[:20])
-            body = data[20:]
+            ipv4_header_length = 20
+            protocol, source_ip, target_ip = unpack('!9xB2x4s4s', data[:ipv4_header_length])
+            body = data[ipv4_header_length:]
         elif ethernet_protocol == 0x86DD: # IPv6
-            protocol, source_ip, target_ip = unpack('!6xB1x8s8s', data[:40])
-            body = data[40:]
+            ipv6_header_length = 40
+            protocol, source_ip, target_ip = unpack('!6xB1x16s16s', data[:ipv6_header_length])
+            body = data[ipv6_header_length:]
         return protocol, source_ip, target_ip, body
 
     @staticmethod
