@@ -3,6 +3,9 @@ import time
 import logging
 
 class Analyzer(object):
+    ONE_MINUTE   = 60
+    FIVE_MINUTES = 300
+
     def __init__(self, second_threshold, minute_threshold, five_minute_threshold, connection_table):
         self.sec_threshold      = second_threshold
         self.min_threshold      = minute_threshold
@@ -11,16 +14,21 @@ class Analyzer(object):
         self.fanout_rates       = {}
 
     def analyze(self):
-        now         = datetime.now()
-        then        = now
-        minute_then = now
+        now               = datetime.now()
+        second_start      = now
+        minute_start      = now
+        five_minute_start = now
         while(1):
             now = datetime.now()
-            self.calculate_fanout_rates(minute_then, then, now)
+            self.calculate_fanout_rates(minute_start, second_start, now)
             self.display_detected_port_scanners()
 
-            then        = now
-            minute_then = now if (now - minute_then).seconds >= 60 else minute_then
+            second_start = now
+            minute_start = now if (now - minute_start).seconds >= self.ONE_MINUTE else minute_start
+            logging.debug(f"Connection Size: {self.connection_table.size()}")
+            if (now - five_minute_start).seconds >= self.FIVE_MINUTES:
+                self.connection_table.vacuum(five_minute_start)
+                five_minute_start = now
             time.sleep(1)
 
     def calculate_fanout_rates(self, minute_start, start, end):
@@ -66,12 +74,12 @@ class Analyzer(object):
                 reason = self.get_reason_str('5 minutes', fanout_rates['5minute'], self.five_min_threshold)
 
             if reason:
-                self.log_detected(source, reason, fanout_rates)
+                self.log_detected_scanner(source, reason, fanout_rates)
 
     def get_reason_str(self, rate_str, rate, threshold):
         return f"fanout rate per {rate_str}={rate} (must be less than {threshold})"
 
-    def log_detected(self, source, reason, fanout_rates):
+    def log_detected_scanner(self, source, reason, fanout_rates):
         banner           = "-----------------------------------------------"
         detected_str     = f"port scanner detected on {source: <10}"
         fanout_rates_str = f"{fanout_rates['second']}/s|{fanout_rates['minute']}/m|{fanout_rates['5minute']}/5m"

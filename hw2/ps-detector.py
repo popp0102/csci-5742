@@ -17,13 +17,13 @@ def analyze(args, connection_table):
     analyzer.analyze()
 
 def main():
-    logging.basicConfig(level=logging.INFO, format='%(message)s')
+    args      = cmd_parse()
+    log_level = logging.DEBUG if args.verbose else logging.INFO
+    logging.basicConfig(level=log_level, format='%(message)s')
 
-    args             = cmd_parse()
     connection_table = ConnectionTable()
-
-    sniffer_thread  = Thread(target=sniff, args=[connection_table])
-    analyzer_thread = Thread(target=analyze, args=[args, connection_table])
+    sniffer_thread   = Thread(target=sniff, args=[connection_table])
+    analyzer_thread  = Thread(target=analyze, args=[args, connection_table])
 
     sniffer_thread.start()
     analyzer_thread.start()

@@ -32,6 +32,9 @@ class ConnectionTable():
     def get_destinations(self, source):
         return self.table[source]
 
+    def size(self):
+        return len(self.table)
+
     def display(self):
         logging.info("\n-----------------------")
         for source, destinations in self.table.items():
@@ -39,4 +42,14 @@ class ConnectionTable():
             for destination, timestamp in destinations.items():
                 logging.debug(f"  destination: {destination}, timestamp: {timestamp}")
         logging.info("-----------------------")
+
+    def vacuum(self, vacuum_time):
+        logging.info(f"Vacuuuming Connection Table: removing all entries older than {vacuum_time}...")
+        for source, destinations in list(self.table.items()):
+            for destination, timestamp in list(destinations.items()):
+                if timestamp < vacuum_time:
+                    destinations.pop(destination, '')
+            if len(destinations) <= 0:
+                self.table.pop(source, '')
+
 

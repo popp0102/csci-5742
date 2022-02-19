@@ -26,7 +26,7 @@ class Sniffer(object):
                 logging.debug(f'{self.to_ethernet_protocol_string(protocol)}')
                 ip_protocol, source_ip, dest_ip, ip_body = self.process_ethernet_body(ethernet_body, protocol)
                 if ip_protocol is None:
-                    logging.error("Unsupported Packet Type")
+                    logging.debug("Unsupported Packet Type, skipping packet...")
                     continue
                 source_string = '.'.join(map(str, source_ip))
                 dest_string = '.'.join(map(str, dest_ip))
@@ -118,3 +118,4 @@ class Sniffer(object):
         elif protocol_enum == 0x86DD:
             protocol_string = "IPv6"
         return protocol_string
+
