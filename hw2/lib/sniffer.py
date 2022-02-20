@@ -56,7 +56,7 @@ class Sniffer(object):
                     continue
                 logging.debug(f"(sniffer thread): ({protocol_string}) \
                     {source_string}:{source_port} -> {dest_string}:{dest_port}")
-                if not is_tcp or is_tcp and is_syn_packet:
+                if is_tcp and is_syn_packet:
                     logging.debug("Inserting into Table")
                     self.connection_table.add(source_string, dest_string, dest_port_string)
 
