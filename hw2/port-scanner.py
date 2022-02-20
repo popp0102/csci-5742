@@ -1,6 +1,7 @@
 import socket
 import argparse
 import time
+from datetime import datetime
 
 ############################################################
 # Function: cmd_parse()
@@ -56,7 +57,7 @@ def main():
             count = 0
             upper_port = port_number + 100
             upper_port = upper_port if upper_port <= 1023 else 1023
-            print('[*] Checking Ports', port_number, '-', upper_port)
+            print(f'[*] ({datetime.now()}) Checking Ports {port_number} - {upper_port}')
     count += 1
 
 if __name__ == "__main__":
