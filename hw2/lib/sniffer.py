@@ -47,15 +47,18 @@ class Sniffer(object):
                 logging.debug(f'Destination Ip: {dest_string}')
                 protocol_string = self.to_packet_protocol_string(ip_protocol)
                 logging.debug(f"Ip Protocol: {protocol_string}")
-                source_port, dest_port, sub_body = self.process_ip_body(ip_body, ip_protocol)
+                source_port, dest_port, is_syn_packet, is_tcp, sub_body = self.process_ip_body(ip_body, ip_protocol)
                 logging.debug(f"Source Port: {source_port}")
                 logging.debug(f"Dest Port: {dest_port}")
                 dest_port_string = str(dest_port)
                 if source_port is None:
                     logging.debug("No port, continue")
                     continue
-                logging.debug(f"(sniffer thread): ({protocol_string}) {source_string}:{source_port} -> {dest_string}:{dest_port}")
-                self.connection_table.add(source_string, dest_string, dest_port_string)
+                logging.debug(f"(sniffer thread): ({protocol_string}) \
+                    {source_string}:{source_port} -> {dest_string}:{dest_port}")
+                if not is_tcp or is_tcp and is_syn_packet:
+                    logging.debug("Inserting into Table")
+                    self.connection_table.add(source_string, dest_string, dest_port_string)
 
     ############################################################
     # Function: process_ethernet_frame()
@@ -103,14 +106,19 @@ class Sniffer(object):
     # parses the destination port, the source port, and the body
     # of the application message.
     ############################################################
-    @staticmethod
-    def process_ip_body(data, ip_protocol):
+    def process_ip_body(self, data, ip_protocol):
         body = data
         source_port = None
         destination_port = None
+        is_syn_flag = False
+        is_tcp = False
         if ip_protocol == 6:
-            source_port, destination_port = unpack('!HH', data[:4])
-            body = data[4:]
+            is_tcp = True
+            source_port, destination_port, flags = unpack('!HH4x4xH', data[:14])
+            flags &= 511
+            is_syn_flag = self.is_packet_syn_packet_ipv4(flags)
+            logging.debug("TCP Packet syn flag: " + str(is_syn_flag))
+            body = data[14:]
             logging.debug(f"Source Port: {source_port}, Destination Port: {destination_port}")
         elif ip_protocol == 17:
             source_port, destination_port = unpack('!HH', data[:4])
@@ -118,7 +126,20 @@ class Sniffer(object):
             body = data[4:]
         elif ip_protocol == 1:
             logging.debug("ICMP no port")
-        return source_port, destination_port, body
+        return source_port, destination_port, is_syn_flag, is_tcp, body
+
+    ############################################################
+    # Function: is_packet_syn_packet_ipv4()
+    #
+    # Takes in a 2's comp representation of the tcp packet flags
+    # Detect if an ip packet is a syn packet
+    # Syn packets can either only have the SYN flag set or
+    # Can have the CWR and ECE flags set as well.
+    ############################################################
+    @staticmethod
+    def is_packet_syn_packet_ipv4(flags):
+        # Flags = [NS|CWR|ECE|URG|ACK|PSH|RST|SYN|FIN]
+        return flags == 2 or flags == 194
 
     ############################################################
     # Function: to_packet_protocol_string()
