@@ -47,13 +47,17 @@ def main():
   target = args.target
   waitms = args.wait
   count  = 0
-  for portNumber in range(1, 1024):
-    print('[*] Checking Port', portNumber, '...')
-    if tcp_scanner(target, portNumber):
-      print('[*] Port', portNumber, '/tcp','is open')
-    count = (count + 1) % 2
-    if count == 0:
+  for port_number in range(1, 1024):
+    if tcp_scanner(target, port_number):
+      print('[*] Port', port_number, '/tcp','is open')
+    if count % 2 == 0:
         time.sleep(waitms / 1000)
+        if count % 100 == 0:
+            count = 0
+            upper_port = port_number + 100
+            upper_port = upper_port if upper_port <= 1023 else 1023
+            print('[*] Checking Ports', port_number, '-', upper_port)
+    count += 1
 
 if __name__ == "__main__":
   main()
