@@ -52,7 +52,7 @@ class Sniffer(object):
                 logging.debug(f"Dest Port: {dest_port}")
                 dest_port_string = str(dest_port)
                 if source_port is None:
-                    logger.warning("No port, continue")
+                    logging.debug("No port, continue")
                     continue
                 logging.debug(f"(sniffer thread): ({protocol_string}) {source_string}:{source_port} -> {dest_string}:{dest_port}")
                 self.connection_table.add(source_string, dest_string, dest_port_string)

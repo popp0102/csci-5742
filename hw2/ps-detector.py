@@ -7,8 +7,6 @@ from lib.analyzer            import Analyzer
 from lib.connection_table    import ConnectionTable
 import logging
 
-
-
 ############################################################
 # Function: sniff()
 #
@@ -18,7 +16,7 @@ import logging
 # with first contact connections.
 ############################################################
 def sniff(connection_table):
-    sniffer = Sniffer(connection_table, ["eth0"])
+    sniffer = Sniffer(connection_table, ["eth0", "lo"])
     sniffer.listen()
 
 ############################################################

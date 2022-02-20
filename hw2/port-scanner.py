@@ -48,6 +48,7 @@ def main():
   waitms = args.wait
   count  = 0
   for portNumber in range(1, 1024):
+    print('[*] Checking Port', portNumber, '...')
     if tcp_scanner(target, portNumber):
       print('[*] Port', portNumber, '/tcp','is open')
     count = (count + 1) % 2
