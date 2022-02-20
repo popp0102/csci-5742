@@ -117,7 +117,7 @@ class Sniffer(object):
             logging.debug(f"Source Port: {source_port}, Destination Port: {destination_port}")
             body = data[4:]
         elif ip_protocol == 1:
-            logging.warning("ICMP no port")
+            logging.debug("ICMP no port")
         return source_port, destination_port, body
 
     ############################################################
