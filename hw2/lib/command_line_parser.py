@@ -2,6 +2,12 @@ import pdb
 import sys
 import argparse
 
+############################################################
+# Function: cmd_parse()
+#
+# A method to parse command line arguments and pass them
+# back to the caller.
+############################################################
 def cmd_parse():
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", action=argparse.BooleanOptionalAction)

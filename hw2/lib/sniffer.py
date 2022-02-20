@@ -5,6 +5,11 @@ from time import sleep
 import logging
 
 class Sniffer(object):
+    ############################################################
+    # Function: __init__()
+    #
+    # Constructor for the Sniffer class.
+    ############################################################
     def __init__(self, connection_table, interfaces):
         ETH_P_ALL = 3  # GET ALL PACKETS FROM PHYSICAL LAYER
         self.connection_table = connection_table
@@ -13,6 +18,14 @@ class Sniffer(object):
         self.should_listen = False
         self.interfaces = interfaces
 
+    ############################################################
+    # Function: listen()
+    #
+    # This is the main method of the Sniffer. It listens to traffic
+    # on raw sockets. If detects specific protocols and versions
+    # on the given interfaces. it will add the source and destination
+    # (ip and port) to the connection table.
+    ############################################################
     def listen(self):
         self.should_listen = True
         sixteen_bytes = 65536
@@ -44,12 +57,29 @@ class Sniffer(object):
                 logging.debug(f"(sniffer thread): ({protocol_string}) {source_string}:{source_port} -> {dest_string}:{dest_port}")
                 self.connection_table.add(source_string, dest_string, dest_port_string)
 
+    ############################################################
+    # Function: process_ethernet_frame()
+    #
+    # This method takes in raw data from the socket and returns
+    # and parses the destination mac, the source mac, and the
+    # protocol version. In addition, it will return the remainder
+    # of the message in the frame (aka the datagram).
+    ############################################################
     @staticmethod
     def process_ethernet_frame(data):
         header_size = 14
         dest_mac, src_mac, protocol = unpack('!6s6sH', data[:header_size])
         return dest_mac, src_mac, protocol, data[header_size:]
 
+    ############################################################
+    # Function: process_ethernet_body()
+    #
+    # This method takes in the ethernet protocol and body and
+    # parses the destination ip, the source ip, and the protocol
+    # version. In addition, it will return the remainder
+    # of the message in the datagram (aka the TCP segment or
+    # UDP datagram).
+    ############################################################
     @staticmethod
     def process_ethernet_body(data, ethernet_protocol):
         protocol = None
@@ -66,6 +96,13 @@ class Sniffer(object):
             body = data[ipv6_header_length:]
         return protocol, source_ip, target_ip, body
 
+    ############################################################
+    # Function: process_ip_body()
+    #
+    # This method takes in the TCP/UDP data and protocol and
+    # parses the destination port, the source port, and the body
+    # of the application message.
+    ############################################################
     @staticmethod
     def process_ip_body(data, ip_protocol):
         body = data
@@ -83,6 +120,12 @@ class Sniffer(object):
             logging.warning("ICMP no port")
         return source_port, destination_port, body
 
+    ############################################################
+    # Function: to_packet_protocol_string()
+    #
+    # Helper method to translate a protocol enum to a transport
+    # layer protocol string.
+    ############################################################
     @staticmethod
     def to_packet_protocol_string(protocol_enum):
         protocol_string = "Unknown"
@@ -98,6 +141,12 @@ class Sniffer(object):
             protocol_string = "IPv6"
         return protocol_string
 
+    ############################################################
+    # Function: to_ethernet_protocol_string()
+    #
+    # Helper method to translate a protocol enum to a network
+    # layer protocol string.
+    ############################################################
     @staticmethod
     def to_ethernet_protocol_string(protocol_enum):
         protocol_string = "Unknown"
