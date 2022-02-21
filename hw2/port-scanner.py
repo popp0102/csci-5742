@@ -25,8 +25,8 @@ def cmd_parse():
 # then prints out the correct form of the input that should
 # be entered by the user
 ############################################################
-def usage(inputStr):
-    print("\nError: {}".format(inputStr))
+def usage(input_str):
+    print("\nError: {}".format(input_str))
     print("target should be of the form 'a.b.c.d' where a,b,c, and d are [0-255]\n")
     exit()
 
