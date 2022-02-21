@@ -11,10 +11,44 @@ from datetime import datetime
 ############################################################
 def cmd_parse():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--target", help="the target ip to do a port scan on", type=str, required=True)
+    parser.add_argument("-t", "--target", help="the target ip to do a port scan on (IPv4 notation)", type=str, required=True)
     parser.add_argument("-w", "--wait",  help="every 2 scans of a port wait this amount of time (in milliseconds)", type=int, required=True)
 
-    return parser.parse_args()
+    args = parser.parse_args()
+    validate_target(args.target)
+    return args
+
+############################################################
+# Function: usage()
+#
+# This method takes in a string to print as an error and
+# then prints out the correct form of the input that should
+# be entered by the user
+############################################################
+def usage(inputStr):
+    print("\nError: {}".format(inputStr))
+    print("target should be of the form 'a.b.c.d' where a,b,c, and d are [0-255]\n")
+    exit()
+
+############################################################
+# Function: validate_target()
+#
+# This method takes in the user input and validates the input
+# is of the correct format. If it isn't, the program will exit
+# telling the user that the format was incorrect. It will then
+# provide usage details on how to put a correct format in.
+############################################################
+def validate_target(ip):
+    ip_pieces = ip.split('.')
+    if len(ip_pieces) != 4:
+        usage("IP Address portion must have 4 pieces separated by a .")
+
+    for ip_piece in ip_pieces:
+        if not ip_piece.isnumeric():
+            usage("IP must be a number")
+        ip_piece_int = int(ip_piece)
+        if ip_piece_int > 255 or ip_piece_int < 0:
+            usage("IP pieces must be a number 0-255")
 
 ####################################################################
 # Function: tcp_scanner()
