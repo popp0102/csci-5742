@@ -1,5 +1,3 @@
-#!./venv/bin/python
-
 from threading               import Thread
 from lib.command_line_parser import cmd_parse
 from lib.sniffer             import Sniffer
