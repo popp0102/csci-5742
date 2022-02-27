@@ -8,7 +8,7 @@ scan_network() {
   subnet=$1
 
   log_message "Scanning $subnet"
-  nmapscan=`nmap $subnet`
+  nmapscan=`nmap -p 1-65535 $subnet`
 
   ip_regex='^Nmap scan report for (.*)$'
   port_regex='^([0-9]+)/[A-Za-z]+.*'
