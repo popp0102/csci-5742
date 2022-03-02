@@ -26,6 +26,7 @@ scan_network() {
   do
     if [[ $line =~ $ip_regex ]]; then
       current_host=${BASH_REMATCH[1]}
+      SCANNED_HOSTS[$current_host]=open
     fi
 
     if [[ $line =~ $port_regex ]]; then
@@ -47,6 +48,11 @@ scan_network() {
 ##############################################################################
 display_network_differences() {
   log_message "Checking for network differences..."
+
+  if [[ ${#LAST_SCAN_HOSTS[@]} == 0 ]]; then
+    log_message "There was no activity on the last scan"
+  fi
+
   for host_port in "${!LAST_SCAN_HOSTS[@]}"
   do
     if ! [[ ${SCANNED_HOSTS["$host_port"]} == open ]]; then
@@ -55,6 +61,10 @@ display_network_differences() {
 
     unset SCANNED_HOSTS["$host_port"]
   done
+
+  if [[ ${#SCANNED_HOSTS[@]} == 0 ]]; then
+    log_message "There was no activity on this scan"
+  fi
 
   for host_port in "${!SCANNED_HOSTS[@]}"
   do
@@ -117,19 +127,18 @@ log_message() {
 # subnet string (eg 192.168.86.0/24).
 ##############################################################################
 main() {
-  LOGFILE='network-log.txt'
-  HOST_DB_FILE='./host-db.txt'
+  LOGFILE="$HOME/network-log.txt"
+  HOST_DB_FILE="$HOME/host-db.txt"
   declare -A SCANNED_HOSTS
   declare -A LAST_SCAN_HOSTS
 
-  log_message "network monitor started"
+  log_message "***** Network monitor started *****"
   load_last_scan
   scan_network $1
   save_scanned_network
   display_network_differences
-  log_message "network monitor finished"
+  log_message "***** Network monitor finished *****"
 }
 
-main "192.168.86.0/24"
-#main "127.0.0.1"
+main $1
 

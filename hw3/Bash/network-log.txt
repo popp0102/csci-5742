@@ -1,0 +1,89 @@
+Wed Mar 2 12:15:01 PM MST 2022 | ***** Network monitor started *****
+Wed Mar 2 12:15:01 PM MST 2022 | No host db file, running first scan...
+Wed Mar 2 12:15:01 PM MST 2022 | Scanning 192.168.10.0/24
+Wed Mar 2 12:17:13 PM MST 2022 | Saving scanned hosts to /home/guest/host-db.txt
+Wed Mar 2 12:17:13 PM MST 2022 | Checking for network differences...
+Wed Mar 2 12:17:13 PM MST 2022 | There was no activity on the last scan
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.128
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:49668
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:49669
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:49666
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:49667
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:49664
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:49665
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:5985
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:47001
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:5040
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:49670
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:7680
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:445
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:139
+Wed Mar 2 12:17:13 PM MST 2022 | OPEN on 192.168.10.129:135
+Wed Mar 2 12:17:13 PM MST 2022 | ***** Network monitor finished *****
+Wed Mar 2 12:20:01 PM MST 2022 | ***** Network monitor started *****
+Wed Mar 2 12:20:01 PM MST 2022 | Loading scan file /home/guest/host-db.txt
+Wed Mar 2 12:20:01 PM MST 2022 | Scanning 192.168.10.0/24
+Wed Mar 2 12:22:18 PM MST 2022 | Saving scanned hosts to /home/guest/host-db.txt
+Wed Mar 2 12:22:18 PM MST 2022 | Checking for network differences...
+Wed Mar 2 12:22:18 PM MST 2022 | There was no activity on this scan
+Wed Mar 2 12:22:18 PM MST 2022 | ***** Network monitor finished *****
+Wed Mar 2 12:25:01 PM MST 2022 | ***** Network monitor started *****
+Wed Mar 2 12:25:01 PM MST 2022 | Loading scan file /home/guest/host-db.txt
+Wed Mar 2 12:25:01 PM MST 2022 | Scanning 192.168.10.0/24
+Wed Mar 2 12:27:27 PM MST 2022 | Saving scanned hosts to /home/guest/host-db.txt
+Wed Mar 2 12:27:27 PM MST 2022 | Checking for network differences...
+Wed Mar 2 12:27:27 PM MST 2022 | There was no activity on this scan
+Wed Mar 2 12:27:27 PM MST 2022 | ***** Network monitor finished *****
+Wed Mar 2 12:30:01 PM MST 2022 | ***** Network monitor started *****
+Wed Mar 2 12:30:01 PM MST 2022 | Loading scan file /home/guest/host-db.txt
+Wed Mar 2 12:30:01 PM MST 2022 | Scanning 192.168.10.0/24
+Wed Mar 2 12:31:37 PM MST 2022 | Saving scanned hosts to /home/guest/host-db.txt
+Wed Mar 2 12:31:37 PM MST 2022 | Checking for network differences...
+Wed Mar 2 12:31:37 PM MST 2022 | There was no activity on this scan
+Wed Mar 2 12:31:37 PM MST 2022 | ***** Network monitor finished *****
+Wed Mar 2 12:35:01 PM MST 2022 | ***** Network monitor started *****
+Wed Mar 2 12:35:01 PM MST 2022 | Loading scan file /home/guest/host-db.txt
+Wed Mar 2 12:35:01 PM MST 2022 | Scanning 192.168.10.0/24
+Wed Mar 2 12:37:01 PM MST 2022 | Saving scanned hosts to /home/guest/host-db.txt
+Wed Mar 2 12:37:01 PM MST 2022 | Checking for network differences...
+Wed Mar 2 12:37:01 PM MST 2022 | OPEN on 192.168.10.130
+Wed Mar 2 12:37:01 PM MST 2022 | ***** Network monitor finished *****
+Wed Mar 2 12:40:01 PM MST 2022 | ***** Network monitor started *****
+Wed Mar 2 12:40:01 PM MST 2022 | Loading scan file /home/guest/host-db.txt
+Wed Mar 2 12:40:01 PM MST 2022 | Scanning 192.168.10.0/24
+Wed Mar 2 12:41:59 PM MST 2022 | Saving scanned hosts to /home/guest/host-db.txt
+Wed Mar 2 12:41:59 PM MST 2022 | Checking for network differences...
+Wed Mar 2 12:41:59 PM MST 2022 | There was no activity on this scan
+Wed Mar 2 12:41:59 PM MST 2022 | ***** Network monitor finished *****
+Wed Mar 2 12:45:01 PM MST 2022 | ***** Network monitor started *****
+Wed Mar 2 12:45:01 PM MST 2022 | Loading scan file /home/guest/host-db.txt
+Wed Mar 2 12:45:01 PM MST 2022 | Scanning 192.168.10.0/24
+Wed Mar 2 12:46:41 PM MST 2022 | Saving scanned hosts to /home/guest/host-db.txt
+Wed Mar 2 12:46:41 PM MST 2022 | Checking for network differences...
+Wed Mar 2 12:46:41 PM MST 2022 | OPEN on 192.168.10.130:8008
+Wed Mar 2 12:46:41 PM MST 2022 | ***** Network monitor finished *****
+Wed Mar 2 12:50:01 PM MST 2022 | ***** Network monitor started *****
+Wed Mar 2 12:50:01 PM MST 2022 | Loading scan file /home/guest/host-db.txt
+Wed Mar 2 12:50:01 PM MST 2022 | Scanning 192.168.10.0/24
+Wed Mar 2 12:50:23 PM MST 2022 | Saving scanned hosts to /home/guest/host-db.txt
+Wed Mar 2 12:50:23 PM MST 2022 | Checking for network differences...
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:49668
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:49669
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:49666
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:49667
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:49664
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:49665
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:5985
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:47001
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:5040
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:49670
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:7680
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:445
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:139
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.129:135
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.130
+Wed Mar 2 12:50:23 PM MST 2022 | CLOSE on 192.168.10.130:8008
+Wed Mar 2 12:50:23 PM MST 2022 | There was no activity on this scan
+Wed Mar 2 12:50:23 PM MST 2022 | ***** Network monitor finished *****
