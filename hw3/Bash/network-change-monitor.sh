@@ -46,6 +46,7 @@ scan_network() {
 # over in this scanne hosts port list must be new host/port pairs that were opened.
 ##############################################################################
 display_network_differences() {
+  log_message "Checking for network differences..."
   for host_port in "${!LAST_SCAN_HOSTS[@]}"
   do
     if ! [[ ${SCANNED_HOSTS["$host_port"]} == open ]]; then
@@ -121,10 +122,12 @@ main() {
   declare -A SCANNED_HOSTS
   declare -A LAST_SCAN_HOSTS
 
+  log_message "network monitor started"
   load_last_scan
   scan_network $1
   save_scanned_network
   display_network_differences
+  log_message "network monitor finished"
 }
 
 main "192.168.86.0/24"
