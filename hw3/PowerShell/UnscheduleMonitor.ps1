@@ -1,0 +1,1 @@
+Unregister-ScheduledJob -Name "CSCI_5742_Task_Monitor" -Force
