@@ -10,6 +10,7 @@ def unhandled_exception():
         print("doing something useful, until...")
         raise Exception("Something happened!")
     except NameError:
+        # this comment doesn't bypass the check, this is still considered bad
         pass
     except Exception:
         pass
