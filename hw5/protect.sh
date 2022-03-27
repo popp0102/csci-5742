@@ -106,7 +106,7 @@ configure_snort() {
 add_hw5_rules_to_snort() {
   log_message "Adding Snort Rules $RULES_FILE to $SNORT_RULES_DIR"
 
-  sudo cp "./$RULES_FILE" $SNORT_RULES_DIR
+  sudo cp "./rules/$RULES_FILE" $SNORT_RULES_DIR
   sudo chown root:root $SNORT_RULES_DIR/$RULES_FILE
 }
 
@@ -117,6 +117,7 @@ add_hw5_rules_to_snort() {
 # time it is run.
 ##############################################################################
 run_snort() {
+  SNORT_LOG_DIR='./snort_log'
   log_message "Creating $SNORT_LOG_DIR..."
   rm -rf "./$SNORT_LOG_DIR"
   mkdir -p "./$SNORT_LOG_DIR"
@@ -135,11 +136,9 @@ setup_ids_rules() {
   SNORT_RULES_DIR="$SNORT_DIR/rules"
   SNORT_CONF="$SNORT_DIR/snort.conf"
   RULES_FILE='hw5-snort.rules'
-  SNORT_LOG_DIR='./snort_log'
 
   configure_snort
   add_hw5_rules_to_snort
-  run_snort
 }
 
 ##############################################################################
