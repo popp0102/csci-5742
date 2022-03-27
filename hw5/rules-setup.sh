@@ -26,6 +26,8 @@ log_message() {
 setup_firewall_rules() {
   log_message "Setting up firewall rules to iptables..."
 
+  LOCAL_IP=`hostname -I`
+
   # Allows Web Clients to connect on port 8008, State is kept track of for New and Established connections
   iptables -A INPUT  -i eth0 -p tcp --dport 8008 -m state --state NEW,ESTABLISHED -j ACCEPT
   iptables -A OUTPUT -o eth0 -p tcp --sport 8008 -m state --state ESTABLISHED     -j ACCEPT
@@ -78,12 +80,66 @@ flush_iptables() {
 }
 
 ##############################################################################
+# Function: configure_snort()
+#
+# This method will add the necessary include line for snort if it doesn't exist
+# and log if it already exists.
+##############################################################################
+configure_snort() {
+  log_message "Configuring Snort..."
+
+  INCLUDE_LINE="include \$RULE_PATH/$RULES_FILE"
+  if [[ ! -z $(grep "$INCLUDE_LINE" $SNORT_CONF) ]]; then
+    log_message "Found configuration '$INCLUDE_LINE' in $SNORT_CONF"
+  else
+    log_message "Adding configuration '$INCLUDE_LINE' to $SNORT_CONF"
+    echo $INCLUDE_LINE | sudo tee -a $SNORT_CONF > /dev/null
+  fi
+}
+
+##############################################################################
+# Function: add_hw5_rules_to_snort()
+#
+# This method will add the necessary snort rules to the custom rules file added
+# from configure_snort()
+##############################################################################
+add_hw5_rules_to_snort() {
+  log_message "Adding Snort Rules $RULES_FILE to $SNORT_RULES_DIR"
+
+  sudo cp "./$RULES_FILE" $SNORT_RULES_DIR
+  sudo chown root:root $SNORT_RULES_DIR/$RULES_FILE
+}
+
+##############################################################################
+# Function: run_snort()
+#
+# This method will run snort. It will create a new snort_log directory each
+# time it is run.
+##############################################################################
+run_snort() {
+  log_message "Creating $SNORT_LOG_DIR..."
+  rm -rf "./$SNORT_LOG_DIR"
+  mkdir -p "./$SNORT_LOG_DIR"
+
+  SNORT_CMD="sudo snort -l $SNORT_LOG_DIR -b -c $SNORT_CONF"
+  log_message "Run Snort with: $SNORT_CMD"
+}
+
+##############################################################################
 # Function: setup_ids_rules()
 #
 # Sets up intrusion detection rules using snort as described in HW5.
 ##############################################################################
 setup_ids_rules() {
-  log_message "Setting up IDS rules to Snort..."
+  SNORT_DIR='/etc/snort'
+  SNORT_RULES_DIR="$SNORT_DIR/rules"
+  SNORT_CONF="$SNORT_DIR/snort.conf"
+  RULES_FILE='hw5-snort.rules'
+  SNORT_LOG_DIR='./snort_log'
+
+  configure_snort
+  add_hw5_rules_to_snort
+  run_snort
 }
 
 ##############################################################################
@@ -92,7 +148,6 @@ setup_ids_rules() {
 # <description>
 ##############################################################################
 main() {
-  LOCAL_IP=`hostname -I`
   flush_iptables
   setup_firewall_rules
   setup_ids_rules
