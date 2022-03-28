@@ -1,0 +1,15 @@
+# Ping Scan
+alert icmp $EXTERNAL_NET any -> $HOME_NET any ( msg:"PING Scan Detected!"; classtype:attempted-recon; sid:1001; rev:1;)
+
+# UDP Scan
+alert udp $EXTERNAL_NET any -> $HOME_NET any ( msg:"UDP Scan Detected!"; flow:stateless; classtype:attempted-recon; sid:1002; rev:1;)
+
+# FIN Scan
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"FIN Scan Detected!"; flow:stateless; flags:F; classtype:attempted-recon; sid:1003; rev:1;)
+
+# NULL Scan
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"NULL Scan Detected!"; flow:stateless; flags:0; classtype:attempted-recon; sid:1004; rev:1;)
+
+# XMAS Scan
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"XMAS Scan Detected!"; flow:stateless; flags:FPU,12; classtype:attempted-recon; sid:1005; rev:1;)
+
