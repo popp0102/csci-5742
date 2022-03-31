@@ -12,13 +12,12 @@ def get_http_payload(tcp_packet):
     Checks the body of the incoming TCP packet for the value 'http'. If that substring exists, then returns
     the entirety of the tcp body, otherwise, returns and empty string.
     """
-    http = b'http'
-    response = b''
-    tcp_body = tcp_packet.payload
-    if http in tcp_body.load:
-        response = tcp_body.load
-    return response.decode()
-
+    http = 'HTTP'
+    response = ''
+    tcp_body = str(tcp_packet.payload)
+    if http.casefold() in tcp_body:
+        response = tcp_body
+    return response
 
 def get_packet_scan_type(tcp_packet):
     """
@@ -30,6 +29,7 @@ def get_packet_scan_type(tcp_packet):
     scan_type_dict = {
         0: 'NULL',
         3: 'SYN-FIN',
+        17: 'MAIMON',
         41: 'XMAS'
     }
     response = ''
