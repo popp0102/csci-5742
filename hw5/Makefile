@@ -31,7 +31,7 @@ udp-scan:
 
 clean:
 	sudo killall snort || true
-	sudo rm -f $(SNORT_DIR)t/rules/hw5-snort.rules
+	sudo rm -f $(SNORT_DIR)/rules/hw5-snort.rules
 	sudo rm -rf $(SNORT_LOG)
 	sudo iptables -F
 
