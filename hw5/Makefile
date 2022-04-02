@@ -1,11 +1,15 @@
 DEFENDER_IP=192.168.10.128
 SNORT_LOG=./DataAnalysis/snort_log
 SNORT_DIR=/etc/snort
+WEBAPP_DIR=gruyere-code-remoteaccess
 
-all: clean protect snort
+all: clean protect webapp snort
 
 protect:
 	sudo ./protect.sh
+
+webapp:
+	cd $(WEBAPP_DIR) && python2 gruyere.py&
 
 snort:
 	rm -rf $(SNORT_LOG)
@@ -30,8 +34,9 @@ udp-scan:
 	sudo nmap -sU $(DEFENDER_IP)
 
 clean:
-	sudo killall snort || true
 	sudo rm -f $(SNORT_DIR)/rules/hw5-snort.rules
 	sudo rm -rf $(SNORT_LOG)
 	sudo iptables -F
+	-sudo killall -9 snort || true
+	-sudo pkill -f "python2 gruyere.py" || true
 
