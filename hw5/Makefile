@@ -1,3 +1,4 @@
+DEFENDER_IP=192.168.10.128
 SNORT_LOG=./DataAnalysis/snort_log
 SNORT_DIR=/etc/snort
 
@@ -10,6 +11,23 @@ snort:
 	rm -rf $(SNORT_LOG)
 	mkdir $(SNORT_LOG)
 	sudo snort -l $(SNORT_LOG) -b -c $(SNORT_DIR)/snort.conf
+
+scan: ping-scan udp-scan xmas-scan fin-scan null-scan
+
+ping-scan:
+	sudo nmap –sP $(DEFENDER_IP) --disable-arp-ping
+
+xmas-scan:
+	sudo nmap -sX $(DEFENDER_IP)
+
+fin-scan:
+	sudo nmap -sF $(DEFENDER_IP)
+
+null-scan:
+	sudo nmap -sN $(DEFENDER_IP)
+
+udp-scan:
+	sudo nmap -sU $(DEFENDER_IP)
 
 clean:
 	sudo killall snort || true
