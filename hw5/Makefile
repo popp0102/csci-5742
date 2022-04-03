@@ -14,7 +14,7 @@ webapp:
 snort:
 	rm -rf $(SNORT_LOG)
 	mkdir $(SNORT_LOG)
-	sudo snort -l $(SNORT_LOG) -b -c $(SNORT_DIR)/snort.conf
+	sudo snort -l $(SNORT_LOG) -b -c $(SNORT_DIR)/snort.conf -k none
 
 scan: ping-scan udp-scan xmas-scan fin-scan null-scan
 
