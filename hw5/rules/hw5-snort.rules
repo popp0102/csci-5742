@@ -1,26 +1,30 @@
 # Ping Scan
-alert icmp $EXTERNAL_NET any -> $HOME_NET any ( msg:"PING Scan Detected!"; classtype:attempted-recon; sid:1001; rev:1;)
+alert icmp any any -> $HOME_NET any ( msg:"PING Scan Detected!"; classtype:attempted-recon; sid:1001; rev:1;)
 
 # UDP Scan
-alert udp $EXTERNAL_NET any -> $HOME_NET any ( msg:"UDP Scan Detected!"; flow:stateless; classtype:attempted-recon; sid:1002; rev:1;)
+alert udp any any -> $HOME_NET any ( msg:"UDP Scan Detected!"; flow:stateless; classtype:attempted-recon; sid:1002; rev:1;)
 
 # FIN Scan
-alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"FIN Scan Detected!"; flow:stateless; flags:F; classtype:attempted-recon; sid:1003; rev:1;)
+alert tcp any any -> $HOME_NET any (msg:"FIN Scan Detected!"; flow:stateless; flags:F; classtype:attempted-recon; sid:1003; rev:1;)
 
 # NULL Scan
-alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"NULL Scan Detected!"; flow:stateless; flags:0; classtype:attempted-recon; sid:1004; rev:1;)
+alert tcp any any -> $HOME_NET any (msg:"NULL Scan Detected!"; flow:stateless; flags:0; classtype:attempted-recon; sid:1004; rev:1;)
 
 # XMAS Scan
-alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"XMAS Scan Detected!"; flow:stateless; flags:FPU,12; classtype:attempted-recon; sid:1005; rev:1;)
+alert tcp any any -> $HOME_NET any (msg:"XMAS Scan Detected!"; flow:stateless; flags:FPU,12; classtype:attempted-recon; sid:1005; rev:1;)
 
 # Potential XSS
-alert tcp $EXTERNAL_NET any -> $HOME_NET 8008 (msg:"Potential XSS Attack Detected!"; content: "<script>"; http_client_body; content: "<script>"; http_uri; content: "<script>"; sid:1006; rev:1;)
+alert tcp any any -> $HOME_NET 8008 (msg:"Potential XSS Attack Detected!"; content: "<script>"; http_client_body; content: "<script>"; http_uri; content: "<script>"; sid:1006; rev:1;)
 
 # Shellshock Exploitation
-alert tcp $EXTERNAL_NET any -> $HOME_NET 8008 (msg:"Shellshock Exploitation Detected!"; content: "{ :\;}\;"; sid:1007; rev:1;)
+alert tcp any any -> $HOME_NET 8008 (msg:"Shellshock Exploitation Detected!"; content: "{ :\;}\;"; sid:1007; rev:1;)
 
 # Directory Traversal Attack
-alert tcp $EXTERNAL_NET any -> $HOME_NET 8008 (msg:"Directory Traversal Attack Detected!"; content: "../"; sid:1008; rev:1;)
+alert tcp any any -> $HOME_NET 8008 (msg:"Directory Traversal Attack Detected!"; content: "../"; sid:1008; rev:1;)
 
-# Failed Attempted Login
-alert tcp $HOME_NET 8008 -> $EXTERNAL_NET any (msg:"Failed Attempted Login Detected!"; content: "Invalid"; file_data; sid:1009; rev:1;)
+# Login Attempt
+alert tcp any any -> $HOME_NET 8008 (msg:"Login Request"; content: "/login?uid="; http_uri; nocase; content: "&pw="; http_uri; nocase; flowbits:set,logging_in; sid:1009; rev:1;)
+
+# Failed Login
+alert tcp $HOME_NET 8008 -> any any (msg:"Login Attempt Failed"; content: "Invalid user name or password"; flowbits:isset,logging_in; sid:1222333; rev:1;)
+
