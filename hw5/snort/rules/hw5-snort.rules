@@ -7,11 +7,17 @@ alert udp any any -> $HOME_NET any ( msg:"UDP Scan Detected!"; flow:stateless; c
 # FIN Scan
 alert tcp any any -> $HOME_NET any (msg:"FIN Scan Detected!"; flow:stateless; flags:F; classtype:attempted-recon; sid:1003; rev:1;)
 
+# SYN-FIN Scan
+alert tcp any any -> $HOME_NET any (msg:"FIN Scan Detected!"; flow:stateless; flags:SF,3; classtype:attempted-recon; sid:1111111112; rev:1;)
+
 # NULL Scan
 alert tcp any any -> $HOME_NET any (msg:"NULL Scan Detected!"; flow:stateless; flags:0; classtype:attempted-recon; sid:1004; rev:1;)
 
 # XMAS Scan
 alert tcp any any -> $HOME_NET any (msg:"XMAS Scan Detected!"; flow:stateless; flags:FPU,12; classtype:attempted-recon; sid:1005; rev:1;)
+
+# MAIMON Scan
+alert tcp any any -> $HOME_NET any (msg:"Maimon Scan Detected!"; flow:stateless; flags:FA,17; classtype:attempted-recon; sid:; rev:1;)
 
 # Potential XSS
 alert tcp any any -> $HOME_NET 8008 (msg:"Potential XSS Attack Detected!"; content: "<script>"; http_client_body; content: "<script>"; http_uri; content: "<script>"; sid:1006; rev:1;)
