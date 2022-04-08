@@ -87,8 +87,10 @@ flush_iptables() {
 ##############################################################################
 configure_snort() {
   log_message "Configuring Snort..."
-
-  INCLUDE_LINE="include \$RULE_PATH/$RULES_FILE"
+  echo $INCLUDE_LINE
+  echo $RULE_PATH
+  echo $RULES_FILE
+  INCLUDE_LINE="include $RULE_PATH/$RULES_FILE"
   if [[ ! -z $(grep "$INCLUDE_LINE" $SNORT_CONF) ]]; then
     log_message "Found configuration '$INCLUDE_LINE' in $SNORT_CONF"
   else
@@ -124,6 +126,7 @@ run_snort() {
 
   SNORT_CMD="sudo snort -l $SNORT_LOG_DIR -b -c $SNORT_CONF"
   log_message "Run Snort with: $SNORT_CMD"
+  exec $SNORT_CMD
 }
 
 ##############################################################################
@@ -132,13 +135,14 @@ run_snort() {
 # Sets up intrusion detection rules using snort as described in HW5.
 ##############################################################################
 setup_ids_rules() {
-  SNORT_DIR='/etc/snort'
+  SNORT_DIR=`pwd`
   SNORT_RULES_DIR="$SNORT_DIR/rules"
+  echo $SNORT_RULES_DIR
   SNORT_CONF="$SNORT_DIR/snort.conf"
   RULES_FILE='hw5-snort.rules'
 
   configure_snort
-  add_hw5_rules_to_snort
+ #add_hw5_rules_to_snort
 }
 
 ##############################################################################
@@ -149,7 +153,7 @@ setup_ids_rules() {
 main() {
   flush_iptables
   setup_firewall_rules
-  setup_ids_rules
+  #setup_ids_rules
 }
 
 main

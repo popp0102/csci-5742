@@ -1,0 +1,336 @@
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:28.531942 192.168.85.128:41374 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:52525 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:28.531947 192.168.85.128:41374 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:52526 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:29.338203 192.168.85.129:35540 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:2169 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:29.338378 192.168.85.129:35540 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:2170 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:33.538221 192.168.85.128:35455 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:52932 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:33.538227 192.168.85.128:35455 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:52933 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:34.346501 192.168.85.129:53098 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:3204 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:34.346731 192.168.85.129:53098 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:3205 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:38.545903 192.168.85.128:35455 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:53629 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:38.545907 192.168.85.128:35455 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:53630 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:39.350190 192.168.85.129:53098 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:3835 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:39.350365 192.168.85.129:53098 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:3836 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:43.551555 192.168.85.128:55589 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:53878 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:43.551960 192.168.85.128:55589 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:53879 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:44.358864 192.168.85.129:38222 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:4950 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:44.359044 192.168.85.129:38222 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:4951 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:48.559133 192.168.85.128:55589 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:54682 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:48.559140 192.168.85.128:55589 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:54683 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:49.366011 192.168.85.129:38222 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:5013 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:49.366184 192.168.85.129:38222 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:5014 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:53.565401 192.168.85.128:54002 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:55811 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:53.565408 192.168.85.128:54002 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:55812 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:54.375393 192.168.85.129:51342 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:5232 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:54.375528 192.168.85.129:51342 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:5233 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:58.572945 192.168.85.128:54002 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:56656 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:58.572950 192.168.85.128:54002 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:56657 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:59.384140 192.168.85.129:51342 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:6007 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:01:59.384226 192.168.85.129:51342 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:6008 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:03.581200 192.168.85.128:44306 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:57794 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:03.581204 192.168.85.128:44306 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:57795 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:04.392428 192.168.85.129:58032 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:7096 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:04.392500 192.168.85.129:58032 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:7097 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:08.584657 192.168.85.128:44306 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:58430 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:08.584663 192.168.85.128:44306 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:58431 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:09.399071 192.168.85.129:58032 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:7893 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:09.399300 192.168.85.129:58032 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:7894 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:13.590047 192.168.85.128:42360 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:59090 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:13.590053 192.168.85.128:42360 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:59091 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:14.407247 192.168.85.129:56000 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:8149 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:14.407344 192.168.85.129:56000 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:8150 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:18.593931 192.168.85.128:42360 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:59715 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:18.593935 192.168.85.128:42360 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:59716 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:19.413723 192.168.85.129:56000 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:8591 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:19.413932 192.168.85.129:56000 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:8592 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:23.604030 192.168.85.128:39581 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:60367 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:23.604036 192.168.85.128:39581 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:60368 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:24.423228 192.168.85.129:60835 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:9468 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:24.423407 192.168.85.129:60835 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:9469 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:28.611570 192.168.85.128:39581 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:61249 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:28.611576 192.168.85.128:39581 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:61250 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:29.432658 192.168.85.129:60835 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:9806 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:29.432831 192.168.85.129:60835 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:9807 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:33.619671 192.168.85.128:53590 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:62414 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:33.619677 192.168.85.128:53590 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:62415 IpLen:20 DgmLen:79 DF
+Len: 51
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:34.440052 192.168.85.129:56677 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:9954 IpLen:20 DgmLen:67 DF
+Len: 39
+
+[**] [1:1002:1] UDP Scan Detected! [**]
+[Classification: Attempted Information Leak] [Priority: 2] 
+04/03-22:02:34.440286 192.168.85.129:56677 -> 192.168.85.1:53
+UDP TTL:64 TOS:0x0 ID:9955 IpLen:20 DgmLen:67 DF
+Len: 39
+
