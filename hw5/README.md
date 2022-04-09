@@ -16,6 +16,9 @@ From the defending machine:
   * make watch
   * see snort alerts after running scans or attacks from attacking machine
 
+# Data Analysis
+See DataAnalysis/README.md for more details
+
 # Description of Make targets
 As mentioned above we have various make targets to run this project. If you just want
 to run the project see Quickstart. This section will dive into what each target is doing.
