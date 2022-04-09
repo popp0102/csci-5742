@@ -19,6 +19,7 @@ def get_http_payload(tcp_packet):
         response = tcp_body
     return response
 
+
 def get_packet_scan_type(tcp_packet):
     """
     Input: TCP Packet
@@ -63,9 +64,11 @@ def pcap_to_dataframe(packet_list):
     return DataFrame(data_list)
 
 
-
-
 def main():
+    """
+    Driver method
+    provides commandline parsing and minor business logic switch based on output flag
+    """
     parser = argparse.ArgumentParser(description='Process a pcap into a csv')
     parser.add_argument('input_file', help='the location of the pcap file')
     parser.add_argument('--output', help='specifies the output file for the csv', default='commandline')
