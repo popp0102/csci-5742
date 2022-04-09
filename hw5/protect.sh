@@ -80,69 +80,13 @@ flush_iptables() {
 }
 
 ##############################################################################
-# Function: configure_snort()
+# Function: display_rules_list_command()
 #
-# This method will add the necessary include line for snort if it doesn't exist
-# and log if it already exists.
+# This method describes to the user how to display the iptables rules that
+# were just created
 ##############################################################################
-configure_snort() {
-  log_message "Configuring Snort..."
-  echo $INCLUDE_LINE
-  echo $RULE_PATH
-  echo $RULES_FILE
-  INCLUDE_LINE="include $RULE_PATH/$RULES_FILE"
-  if [[ ! -z $(grep "$INCLUDE_LINE" $SNORT_CONF) ]]; then
-    log_message "Found configuration '$INCLUDE_LINE' in $SNORT_CONF"
-  else
-    log_message "Adding configuration '$INCLUDE_LINE' to $SNORT_CONF"
-    echo $INCLUDE_LINE | sudo tee -a $SNORT_CONF > /dev/null
-  fi
-}
-
-##############################################################################
-# Function: add_hw5_rules_to_snort()
-#
-# This method will add the necessary snort rules to the custom rules file added
-# from configure_snort()
-##############################################################################
-add_hw5_rules_to_snort() {
-  log_message "Adding Snort Rules $RULES_FILE to $SNORT_RULES_DIR"
-
-  sudo cp "./rules/$RULES_FILE" $SNORT_RULES_DIR
-  sudo chown root:root $SNORT_RULES_DIR/$RULES_FILE
-}
-
-##############################################################################
-# Function: run_snort()
-#
-# This method will run snort. It will create a new snort_log directory each
-# time it is run.
-##############################################################################
-run_snort() {
-  SNORT_LOG_DIR='./snort_log'
-  log_message "Creating $SNORT_LOG_DIR..."
-  rm -rf "./$SNORT_LOG_DIR"
-  mkdir -p "./$SNORT_LOG_DIR"
-
-  SNORT_CMD="sudo snort -l $SNORT_LOG_DIR -b -c $SNORT_CONF"
-  log_message "Run Snort with: $SNORT_CMD"
-  exec $SNORT_CMD
-}
-
-##############################################################################
-# Function: setup_ids_rules()
-#
-# Sets up intrusion detection rules using snort as described in HW5.
-##############################################################################
-setup_ids_rules() {
-  SNORT_DIR=`pwd`
-  SNORT_RULES_DIR="$SNORT_DIR/rules"
-  echo $SNORT_RULES_DIR
-  SNORT_CONF="$SNORT_DIR/snort.conf"
-  RULES_FILE='hw5-snort.rules'
-
-  configure_snort
- #add_hw5_rules_to_snort
+display_rules_list_command() {
+  log_message "To see the new iptables rules simply run: sudo iptables -L"
 }
 
 ##############################################################################
@@ -153,7 +97,7 @@ setup_ids_rules() {
 main() {
   flush_iptables
   setup_firewall_rules
-  #setup_ids_rules
+  display_rules_list_command
 }
 
 main
