@@ -3,7 +3,7 @@ This README goes over the basics to setting up and running this project.
 Although any of these command can be run maually, We use a Makefile to make all
 of the commands much easier to run.
 
-# Reqirements
+# Requirements
 The only requirement is this is run on the same Kali VM the professor setup as
 it was only tested here. The homework requires 2 Kali VMs - one attacker and
 one defender.
