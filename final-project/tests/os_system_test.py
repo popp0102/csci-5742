@@ -15,6 +15,7 @@ def os_system_test_with_input(arbitrary_input):
     This test uses OS.System and should be flagged!
     :return: NULL
     """
+    exec("print(Hello)")
     os.system(arbitrary_input)
 
 
