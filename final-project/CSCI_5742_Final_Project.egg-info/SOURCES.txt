@@ -1,8 +1,0 @@
-setup.py
-CSCI_5742_Final_Project.egg-info/PKG-INFO
-CSCI_5742_Final_Project.egg-info/SOURCES.txt
-CSCI_5742_Final_Project.egg-info/dependency_links.txt
-CSCI_5742_Final_Project.egg-info/top_level.txt
-cve_plugins/ban_arbitrary_execution_subprocess.py
-cve_plugins/ban_create_os_subprocess.py
-cve_plugins/cwe1.py

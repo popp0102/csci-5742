@@ -66,6 +66,11 @@ class BanCreateSubprocessViaOS(BaseTokenChecker):
     ]
 
     def process_tokens(self, tokens):
+        """
+        Processes the raw token strings, looks for tokens that match the banned names above. There could be
+        classifications if a user names a variable the same as one of the defined banned calls. In these cases the
+        user should not have used the name.
+        """
         for (tok_type, token, line_character_start_tuple, line_character_end_tuple, line_being_parsed) in tokens:
             line_number = line_character_start_tuple[0]
             start_col = line_character_start_tuple[1]
