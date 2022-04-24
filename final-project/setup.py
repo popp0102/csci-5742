@@ -13,7 +13,8 @@ setup(name='CSCI_5742_Final_Project',
       py_modules=[
             'ban_arbitrary_execution_subprocess',
             'ban_create_os_subprocess',
-            'cwe1'],
+            'cwe1',
+            'input_sanitization_check],
       install_requires=[
             'astroid==2.9.3',
             'pylint==2.12.2'
