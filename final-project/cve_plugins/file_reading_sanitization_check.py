@@ -20,16 +20,43 @@ class FileReadingSanitizationChecker(BaseChecker):
     priority = -1
     msgs = {
         'W0003': (
-            "Detected file, but no input sanitization was found. Be sure to sanitize any data read from a file.",
+            "Detected file read with no input sanitization. Be sure to sanitize any data read from a file.",
             'file-reading-sanitize-check',
             'Reading from a file can be insecure. Be sure to sanitize any data read in.',
         ),
     }
     options = ()
+    OPEN_REGEX = "^open(\w*)"
 
     def __init__(self, linter: PyLinter =None) -> None:
         super(FileReadingSanitizationChecker, self).__init__(linter)
 
+    def is_open_statement(self, value):
+        if re.search(self.OPEN_REGEX, value.as_string()):
+            return True
+        return False
+
     def visit_functiondef(self, node) -> None:
-        self.add_message('file-reading-sanitize-check', node=node)
+        open_files = {}
+        for statement in node.body:
+            node_type = statement.__class__.__name__
+            if node_type in ['Assign']:
+                if self.is_open_statement(statement.value):
+                    for target in statement.targets:
+                        target_name = target.as_string()
+                        open_files[target_name] = statement
+            elif node_type in ['Expr']:
+                for open_file, open_file_node in open_files.items():
+                    if re.search(open_file, statement.as_string()):
+                        self.add_message('file-reading-sanitize-check', node=statement)
+            elif node_type in ['For'] and statement.iter.as_string() in open_files:
+                current_line = statement.target.as_string()
+                for for_body_statement in statement.body:
+                    sub_nodetype = for_body_statement.__class__.__name__
+                    if sub_nodetype in ['Expr'] and for_body_statement.value.__class__.__name__ in ['Call']:
+                        method_call_node = for_body_statement.value
+                        for arg in method_call_node.args:
+                            if current_line == arg.as_string():
+                                self.add_message('file-reading-sanitize-check', node=method_call_node)
+                                pass
 
