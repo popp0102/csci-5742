@@ -1,14 +1,14 @@
 import html
 
-def get_user_input_without_sanitization3():
-    user_input = input("Please enter something")
-    return user_input
-
 def get_user_input_without_sanitization():
     input("Please enter something")
 
 def get_user_input_without_sanitization2():
     return input("Please enter something")
+
+def get_user_input_without_sanitization3():
+    user_input = input("Please enter something")
+    return user_input
 
 def get_user_input_with_sanitization():
     print("Please enter something")
