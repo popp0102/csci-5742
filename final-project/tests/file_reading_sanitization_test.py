@@ -16,7 +16,7 @@ def read_test_file_with_no_sanitization2(fullpath):
 def read_test_file_with_sanitization2(fullpath):
     file = open(fullpath)
     line = file.readline()
-    line = line.escape(user_input)
+    line = html.escape(line)
 
 
 ######################################################################
