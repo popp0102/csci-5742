@@ -20,7 +20,8 @@ class InputSanitizationChecker(BaseChecker):
     priority = -1
     msgs = {
         'W0002': (
-            "The input() method was used, but there doesn't seem to be any input sanitization. It is highly recommended some be added.",
+            "The input() method was used, but there doesn't seem to be any input sanitization."
+            "It is highly recommended some be added. (CWE-20)",
             'input-sanitize-check',
             'When gathering input() from the user, it is always safest to sanitize that input.',
         ),

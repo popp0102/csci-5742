@@ -22,7 +22,7 @@ class FileReadingSanitizationChecker(BaseChecker):
     priority = -1
     msgs = {
         'W0003': (
-            "Detected file read with no input sanitization. Be sure to sanitize any data read from a file.",
+            "Detected file read with no input sanitization. Be sure to sanitize any data read from a file. (CWE-552)",
             'file-reading-sanitize-check',
             'Reading from a file can be insecure. Be sure to sanitize any data read in.',
         ),

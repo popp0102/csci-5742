@@ -20,7 +20,8 @@ class PassOnlyChecker(BaseChecker):
     priority = -1
     msgs = {
         'W0001': (
-            'Keyword "pass" used in isolation. The error should be explicitly handled. Consider at least logging it.',
+            'Keyword "pass" used in isolation. The error should be explicitly handled. Consider at least logging it.'
+            ' (CWE-755)',
             'pass-only-used',
             'Exception blocks should be handled, sole use of pass not recommended.',
         ),
