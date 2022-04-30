@@ -7,13 +7,14 @@ inputs, these mainly involve user input, file input and interaction with the ope
 the checkers implemented by Kiwi[2], thanks to them for their wonderful video[5].
 
 ## Table of Contents
+- [Quick Start](#Quick-Start)
 - [How to Build Distribution](#How-to-Build-Distribution)
 - [How To Install](#How-To-Install)
 - [How To Run](#How-To-Run)
 - [Available Plugins](#Available-Plugins)
 - [References](#References)
 
-## Quick Install/Run ##
+## Quick Start ##
 ### Install ###
 Run the script to install:
   1. ./bin/quick-install.sh
@@ -26,6 +27,7 @@ These are automated scripts to run any plugin on the test code.
   1. ./bin/file_sanitization.sh
   1. ./bin/os-subprocess.sh
 
+## Install Using Wheels ##
 ```bash
 python3 setup.py sdist bdist_wheel
 ```
