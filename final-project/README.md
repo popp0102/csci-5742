@@ -1,6 +1,6 @@
 # CSCI 5742 Final Project
 Jason Poppler and Benjamin Straub  
-The purpose of this project is to create a best effort CWE finder à la FlawFinder; 
+The purpose of this project is to create a best effort CWE finder à la FlawFinder; it uses 
 
 ## Table of Contents
 - [How To Install](#How-To-Install)
@@ -35,12 +35,13 @@ pylint --load-plugins=ban_arbitrary_execution_subprocess ${Library_Under_Test}
 ```
 
 ## Available Plugins
-* ban_arbitrary_execution_subprocess Attempts to find usages of run and Popen methods on the subprocess module which 
+* ban_arbitrary_execution_subprocess - Attempts to find usages of run and Popen methods on the subprocess module which 
 allows arbitrary code execution and opens the door to CWE-78.
-* ban_create_os_subprocess Attempts to find usages of a variety of functions that the os module provides to create
+* ban_create_os_subprocess - Attempts to find usages of a variety of functions that the os module provides to create
 subprocesses; since the subprocess module exists, these should be avoided. They also fall under CWE-78
-* file_reading_sanitization_check
-* input_sanitization_check
+* ban_empty_try_catch_blocks - Attempts to find any use of try except that only contains the pass keyword
+* file_reading_sanitization_check - Attempts to find 
+* input_sanitization_check - Attempts to find
 
 ## References
 [1] [Pylint - How to Write a Pylint Plugin](https://pylint.pycqa.org/en/latest/how_tos/plugins.html) last visited 04/22/2022  

@@ -28,7 +28,7 @@ class BanCreateSubprocessViaOS(BaseTokenChecker):
     name = 'find-banned-subprocess-creation'
     priority = -1
     msgs = {
-        'W0005': ('"%s" should not be used, try multiprocessing.'
+        'W0005': ('"%s" should not be used, try multiprocessing. Opens up your program to CWE-78'
                   'Remember to sanitize your paths when execing paths (CWE-78)',
                   SUBPROCESS_CREATION_IS_BANNED,
                   'Avoid using os level calls for subprocess creation. Opens up your program to CWE-78')

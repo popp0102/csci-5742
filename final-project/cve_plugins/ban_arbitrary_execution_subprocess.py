@@ -27,7 +27,7 @@ class BanArbitraryExecutionFromSubprocess(BaseTokenChecker):
     name = BAN_ARBITRARY_EXECUTION_SUBPROCESS
     priority = -1
     msgs = {
-        'W0008': ('"%s" should not be used ',
+        'W0008': ('"%s" should not be used, ppens up your program to CWE-78 ',
                   BAN_ARBITRARY_EXECUTION_SUBPROCESS,
                   'Avoid creating subprocesses that execute external scripts. Opens up your program to CWE-78.')
     }
