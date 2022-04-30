@@ -13,12 +13,24 @@ the checkers implemented by Kiwi[2], thanks to them for their wonderful video[5]
 - [Available Plugins](#Available-Plugins)
 - [References](#References)
 
-## How to Build Distribution
+## Quick Install/Run ##
+### Install ###
+Run the script to install:
+  1. ./bin/quick-install.sh
+
+### Run ###
+These are automated scripts to run any plugin on the test code.
+  1. ./bin/empty-try-catch.sh
+  1. ./bin/input_sanitization.sh
+  1. ./bin/subprocess.sh
+  1. ./bin/file_sanitization.sh
+  1. ./bin/os-subprocess.sh
+
 ```bash
 python3 setup.py sdist bdist_wheel
 ```
 The above should create a dist directory which contains the `-py3-none-any.whl` and `.tar.gz` distributions of the
-codebase.
+codebase. Note the above requires wheel to be installed.  Refer to the Quick Start if you don't have wheel installed.
 
 ## How To Install
 ```bash
