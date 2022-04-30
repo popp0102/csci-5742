@@ -6,6 +6,8 @@ but are looking for instances that could be vulnerable or cause issue. Since the
 inputs, these mainly involve user input, file input and interaction with the operating system. Some code was based off
 the checkers implemented by Kiwi[2], thanks to them for their wonderful video[5].
 
+Link to Demo: https://youtu.be/cJMREXIrKGM
+
 ## Table of Contents
 - [Quick Start](#Quick-Start)
 - [How to Build Distribution](#How-to-Build-Distribution)
