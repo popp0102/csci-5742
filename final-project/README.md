@@ -12,6 +12,7 @@ the checkers implemented by Kiwi[2], thanks to them for their wonderful video[5]
 - [How To Install](#How-To-Install)
 - [How To Run](#How-To-Run)
 - [Available Plugins](#Available-Plugins)
+- [Directory Structure](#Directory-Structure)
 - [References](#References)
 
 ## Quick Start ##
@@ -64,6 +65,15 @@ CWE-755.
 and warns against its usage. Falls under the CWE-552.
 * **input_sanitization_check** - Attempts to find uses of the builtin function input() that takes external input from the
 input stream (keyboard, etc) and warns against its usage. Falls under CWE-20.
+
+## Directory Structure
+* tests - this directory contains code for testing our plugins.
+* bin - contains executable for installing and running tests with the pylint plugin
+* cve_plugins - contains code we implemented to detect CWEs
+* setup.py - used for installation
+* requirements.txt - used to install dependencies
+* README.md - this file, it explains the project
+
 
 ## References
 [1] [Pylint - How to Write a Pylint Plugin](https://pylint.pycqa.org/en/latest/how_tos/plugins.html) last visited 04/22/2022  
