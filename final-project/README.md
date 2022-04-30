@@ -70,6 +70,7 @@ input stream (keyboard, etc) and warns against its usage. Falls under CWE-20.
 * tests - this directory contains code for testing our plugins.
 * bin - contains executable for installing and running tests with the pylint plugin
 * cve_plugins - contains code we implemented to detect CWEs
+* docs - contains documentation
 * setup.py - used for installation
 * requirements.txt - used to install dependencies
 * README.md - this file, it explains the project
