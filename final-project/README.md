@@ -1,23 +1,46 @@
 # CSCI 5742 Final Project
-Jason Joppler and Benjamin Straub  
-The original scope of your project was to 
+Jason Poppler and Benjamin Straub  
+The purpose of this project is to create a best effort CWE finder à la FlawFinder; 
 
 ## Table of Contents
 - [How To Install](#How-To-Install)
 - [How To Run](#How-To-Run)
+- [Available Plugins](#Available-Plugins)
 - [References](#References)
 
+## How to Build Distribution
+```bash
+python3 setup.py sdist bdist_wheel
+```
+The above should create a dist directory which contains the `-py3-none-any.whl` and `.tar.gz` distributions of the
+codebase.
 
 ## How To Install
 ```bash
 # Install the required libraries 
 pip install -r requirements.txt
+pip install CSCI_5742_Final_Project-1.0-py3-none-any.whl
 ```
 
 ## How To Run
+When installed using pip, all plugin modules fall under the cve_plugins package
 ```bash
-pylint --load-plugins=ban_arbitrary_execution_subprocess,ban_create_os_subprocess,cwe1 ${Library_Under_Test}
+pylint --load-plugins=cve_plugins.ban_arbitrary_execution_subprocess ${Library_Under_Test}
 ```
+
+Adding the cve_plugins directory to the PYTHONPATH environment variable should allow for use of the plugins
+directly.
+```bash
+pylint --load-plugins=ban_arbitrary_execution_subprocess ${Library_Under_Test}
+```
+
+## Available Plugins
+* ban_arbitrary_execution_subprocess Attempts to find usages of run and Popen methods on the subprocess module which 
+allows arbitrary code execution and opens the door to CWE-78.
+* ban_create_os_subprocess Attempts to find usages of a variety of functions that the os module provides to create
+subprocesses; since the subprocess module exists, these should be avoided. They also fall under CWE-78
+* file_reading_sanitization_check
+* input_sanitization_check
 
 ## References
 [1] [Pylint - How to Write a Pylint Plugin](https://pylint.pycqa.org/en/latest/how_tos/plugins.html) last visited 04/22/2022  

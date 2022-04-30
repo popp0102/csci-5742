@@ -8,8 +8,10 @@ from pylint.lint       import PyLinter
 if TYPE_CHECKING:
     from pylint.lint import PyLinter
 
+
 def register(linter: "PyLinter") -> None:
     linter.register_checker(PassOnlyChecker(linter))
+
 
 class PassOnlyChecker(BaseChecker):
     __implements__ = IAstroidChecker

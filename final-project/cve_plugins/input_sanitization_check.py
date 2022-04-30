@@ -44,7 +44,7 @@ class InputSanitizationChecker(BaseChecker):
                 if self.is_input_statement(statement.value):
                     self.add_message('input-sanitize-check', node=statement)
                 for lhs_name, original_statement in lhs_of_input_dict.items():
-                    if node_type == 'Return' and statement.value.as_string() ==  lhs_name:
+                    if node_type == 'Return' and statement.value.as_string() == lhs_name:
                         self.add_message('input-sanitize-check', node=statement)
             elif node_type in ['Assign']:
                 for target in statement.targets:

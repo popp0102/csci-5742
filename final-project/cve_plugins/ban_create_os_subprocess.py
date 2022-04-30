@@ -5,7 +5,6 @@
 """
 from pylint.interfaces import IAstroidChecker, ITokenChecker
 from pylint.checkers import BaseTokenChecker
-from astroid.nodes import Call, Name
 
 
 def register(linter):

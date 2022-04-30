@@ -18,7 +18,10 @@ def register(linter):
 
 class BanArbitraryExecutionFromSubprocess(BaseTokenChecker):
     __implements__ = (IAstroidChecker, ITokenChecker)
-
+    """
+    This plugin attempts to find the use of banned subprocess functions through tokens, imports and calls. The banned
+    functions are run and Popen. Since run is a common method name, the specific use of subprocess.run is looked for.
+    """
     debug = False
     BAN_ARBITRARY_EXECUTION_SUBPROCESS = 'ban-arbitrary-execution-subprocess'
     name = BAN_ARBITRARY_EXECUTION_SUBPROCESS

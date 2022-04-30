@@ -1,17 +1,19 @@
 import pdb
 import re
 import astroid
-from typing            import TYPE_CHECKING
-from astroid           import nodes
-from pylint.checkers   import BaseChecker
+from typing import TYPE_CHECKING
+from astroid import nodes
+from pylint.checkers import BaseChecker
 from pylint.interfaces import IAstroidChecker
-from pylint.lint       import PyLinter
+from pylint.lint import PyLinter
 
 if TYPE_CHECKING:
     from pylint.lint import PyLinter
 
+
 def register(linter: "PyLinter") -> None:
     linter.register_checker(FileReadingSanitizationChecker(linter))
+
 
 class FileReadingSanitizationChecker(BaseChecker):
     __implements__ = IAstroidChecker
@@ -26,9 +28,9 @@ class FileReadingSanitizationChecker(BaseChecker):
         ),
     }
     options = ()
-    OPEN_REGEX = "^open(\w*)"
+    OPEN_REGEX = '^open(\w*)'
 
-    def __init__(self, linter: PyLinter =None) -> None:
+    def __init__(self, linter: PyLinter = None) -> None:
         super(FileReadingSanitizationChecker, self).__init__(linter)
 
     def is_open_statement(self, value):
@@ -59,4 +61,3 @@ class FileReadingSanitizationChecker(BaseChecker):
                             if current_line == arg.as_string():
                                 self.add_message('file-reading-sanitize-check', node=method_call_node)
                                 pass
-
