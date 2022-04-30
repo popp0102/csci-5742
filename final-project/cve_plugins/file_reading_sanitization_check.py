@@ -10,7 +10,9 @@ from pylint.lint import PyLinter
 if TYPE_CHECKING:
     from pylint.lint import PyLinter
 
-
+"""
+    Register the plugin with PyLint
+"""
 def register(linter: "PyLinter") -> None:
     linter.register_checker(FileReadingSanitizationChecker(linter))
 
@@ -28,16 +30,26 @@ class FileReadingSanitizationChecker(BaseChecker):
         ),
     }
     options = ()
-    OPEN_REGEX = '^open(\w*)'
+    OPEN_REGEX = '^open(\w*)' # regex to check for open statements
 
     def __init__(self, linter: PyLinter = None) -> None:
         super(FileReadingSanitizationChecker, self).__init__(linter)
 
+    """
+        This method takes in a node value and checks if it is an open statment. It uses the regex defined above.
+    """
     def is_open_statement(self, value):
         if re.search(self.OPEN_REGEX, value.as_string()):
             return True
         return False
 
+    """
+        This method gets called every time there is a function definition when AST "visits" these nodes.
+        There are 3 cases this supports - Assign, Expressions and a For loops. If the left hand side of an
+        open statement isn't being used then we can assume there is no file input sanitization, so throw
+        a warning. Same with the For loop. We will inspect the statement body and if there is an expression
+        with no left hand side being set, we will assume there is no input sanitization.
+    """
     def visit_functiondef(self, node) -> None:
         open_files = {}
         for statement in node.body:
@@ -60,4 +72,4 @@ class FileReadingSanitizationChecker(BaseChecker):
                         for arg in method_call_node.args:
                             if current_line == arg.as_string():
                                 self.add_message('file-reading-sanitize-check', node=method_call_node)
-                                pass
+

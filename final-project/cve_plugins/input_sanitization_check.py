@@ -10,6 +10,9 @@ from pylint.lint       import PyLinter
 if TYPE_CHECKING:
     from pylint.lint import PyLinter
 
+"""
+    Register the plugin with PyLint
+"""
 def register(linter: "PyLinter") -> None:
     linter.register_checker(InputSanitizationChecker(linter))
 
@@ -27,16 +30,25 @@ class InputSanitizationChecker(BaseChecker):
         ),
     }
     options = ()
-    INPUT_REGEX = "^input(\w*)"
+    INPUT_REGEX = "^input(\w*)" # regex to check if an input statement
 
     def __init__(self, linter: PyLinter =None) -> None:
         super(InputSanitizationChecker, self).__init__(linter)
 
+    """
+        Method to check if the node value is an input statement. Uses the regex defined above.
+    """
     def is_input_statement(self, value):
         if re.search(self.INPUT_REGEX, value.as_string()):
             return True
         return False
 
+    """
+        This method gets called every time there is a function definition when AST "visits" these nodes.
+        We iterate over all statements in the function definition looking for input() method calls. If
+        one is found then we will keep track if that statment is set to a variable or not. We will take
+        into account whether the input is called via return statment and also warn on that.
+    """
     def visit_functiondef(self, node) -> None:
         lhs_of_input_dict = {}
         for statement in node.body:
